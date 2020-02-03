@@ -15,7 +15,7 @@ public class Home {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "home", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "home", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<File> files;
     @ManyToOne
     @JoinColumn(name = "user_id")

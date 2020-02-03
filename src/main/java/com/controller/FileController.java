@@ -26,7 +26,7 @@ public class FileController {
     FileService fileService;
     @Autowired
     HomeService homeService;
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> upload(@RequestParam("name") MultipartFile file,@PathVariable Long id) throws IOException{
         Optional<Home> home = homeService.findById(id);
         File file1 = new File();
