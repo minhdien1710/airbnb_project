@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Getter
 @Setter
-public class SignupForm {
+public class SignUpForm {
     @NotBlank
     @Size(min = 3, max = 50)
     private String name;

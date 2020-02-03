@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.message.request.LoginForm;
-import com.message.request.SignupForm;
+import com.message.request.SignUpForm;
 import com.message.response.JwtResponse;
 import com.message.response.ResponseMessage;
 import com.model.Role;
@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(jwt,userDetails.getUsername(),userDetails.getAuthorities()));
     }
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody SignupForm registerRequest){
+    public ResponseEntity<?> registerUser(@RequestBody SignUpForm registerRequest){
         if(userRepository.existsByUsername(registerRequest.getUsername())){
             return new ResponseEntity<>(new ResponseMessage("Fail -> username already taken"), HttpStatus.BAD_REQUEST);
         }
@@ -60,16 +60,14 @@ public class UserController {
         Set<String> strRoles = registerRequest.getRole();
         Set<Role> roles = new HashSet<>();
         strRoles.forEach(role -> {
-            switch (role) {
-                case "admin":
-                    Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-                            .orElseThrow(() -> new RuntimeException("Fail -> Cause:User role not found"));
-                    roles.add(adminRole);
-                    break;
-                default:
-                    Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                            .orElseThrow(() -> new RuntimeException("Fail -> Cause User role not found"));
-                    roles.add(userRole);
+            if ("admin".equals(role)) {
+                Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
+                        .orElseThrow(() -> new RuntimeException("Fail -> Cause:User role not found"));
+                roles.add(adminRole);
+            } else {
+                Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Fail -> Cause User role not found"));
+                roles.add(userRole);
             }
         });
         user.setRoles(roles);
