@@ -1,4 +1,4 @@
-package com.security.service.auth;
+package com.security.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.model.User;

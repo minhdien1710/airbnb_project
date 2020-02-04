@@ -1,6 +1,6 @@
 package com.security.jwt;
 
-import com.security.service.auth.UserPrincipal;
+import com.security.auth.UserPrincipal;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

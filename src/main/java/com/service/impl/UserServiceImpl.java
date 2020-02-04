@@ -1,8 +1,8 @@
-package com.security.service.impl;
+package com.service.impl;
 
 import com.model.User;
 import com.repository.UserRepository;
-import com.security.service.UserService;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

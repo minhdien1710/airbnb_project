@@ -1,8 +1,8 @@
-package com.security.service.impl;
+package com.service.impl;
 
 import com.model.File;
 import com.repository.FileRepository;
-import com.security.service.FileService;
+import com.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,10 +2,10 @@ package com.controller;
 
 import com.model.Home;
 import com.model.User;
-import com.security.service.FileService;
-import com.security.service.HomeService;
-import com.security.service.auth.UserPrincipal;
-import com.security.service.UserService;
+import com.service.FileService;
+import com.service.HomeService;
+import com.security.auth.UserPrincipal;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

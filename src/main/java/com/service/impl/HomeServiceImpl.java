@@ -1,8 +1,8 @@
-package com.security.service.impl;
+package com.service.impl;
 
 import com.model.Home;
 import com.repository.HomeRepository;
-import com.security.service.HomeService;
+import com.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

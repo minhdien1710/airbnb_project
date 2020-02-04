@@ -1,8 +1,8 @@
-package com.security.service.impl;
+package com.service.impl;
 
 import com.model.Comment;
 import com.repository.CommentRepository;
-import com.security.service.CommentService;
+import com.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

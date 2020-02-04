@@ -2,8 +2,8 @@ package com.controller;
 
 import com.model.File;
 import com.model.Home;
-import com.security.service.FileService;
-import com.security.service.HomeService;
+import com.service.FileService;
+import com.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
