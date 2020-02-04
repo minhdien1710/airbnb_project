@@ -1,6 +1,6 @@
 package com.security.jwt;
 
-import com.security.service.UserDetailsServiceImpl;
+import com.security.service.auth.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import com.model.Home;
 import com.model.User;
 import com.security.service.FileService;
 import com.security.service.HomeService;
-import com.security.service.UserPrincipal;
+import com.security.service.auth.UserPrincipal;
 import com.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
