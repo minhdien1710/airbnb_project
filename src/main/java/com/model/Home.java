@@ -18,9 +18,17 @@ public class Home {
 
     private String name;
 
+    private String address;
+
+    private Integer bedRoom;
+
+    private Integer bathRoom;
+
+    private Double price;
+
     @JsonIgnore
     @OneToMany(mappedBy = "home", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<File> files;
+    private Set<File> files;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -33,5 +41,8 @@ public class Home {
     @ManyToOne
     @JoinColumn(name = "type_home_id")
     private TypeHome typeHome;
+
+    @OneToMany(mappedBy = "home",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Comment> comments;
 
 }
