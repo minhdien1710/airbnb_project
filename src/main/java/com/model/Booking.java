@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import static com.formatter.DateParse.dateParser;
 
 @Entity
 @Table(name = "booking")
@@ -26,4 +27,14 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "home_id")
     private Home home;
+
+    public String getCreateDate(){
+        return dateParser(createDate,"yyyy/MM/dd HH:mm:ss");
+    }
+    public String getCheckInDate(){
+        return dateParser(checkInDate,"yyyy/MM/dd");
+    }
+    public String getCheckOutDate(){
+        return dateParser(checkOutDate,"yyyy/MM/dd");
+    }
 }
