@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-
 @RestController
-@RequestMapping("/auth/api/homes")
+@RequestMapping("/api/auth/homes")
 public class HomeController {
     private UserPrincipal getCurrentUser() {
+
         return (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
     @Autowired
@@ -52,7 +52,7 @@ public class HomeController {
     public ResponseEntity<?> createHome(@Valid @RequestBody Home home){
         Long id = getCurrentUser().getId();
         Optional<User> user = userService.findById(id);
-        home.setUser(user.get());
+//        home.setUser(user.get());
         homeService.save(home);
         return new ResponseEntity<>(home,HttpStatus.CREATED);
     }

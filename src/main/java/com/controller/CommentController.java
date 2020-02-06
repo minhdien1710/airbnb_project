@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/auth/api/comment")
+@RequestMapping("/api/auth/comment")
 public class CommentController {
     @Autowired
     private CommentService commentService;
@@ -42,14 +42,14 @@ public class CommentController {
     @PostMapping("/{homeId}")
     public ResponseEntity<ResponseMessage> createComment(@RequestBody Comment comment, @PathVariable Long homeId){
         if(comment.getContent()== null || comment.getContent().equals("")){
-            return new ResponseEntity<>(new ResponseMessage("You have not comment yet"), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(new ResponseMessage(false,"You have not comment yet",null), HttpStatus.NO_CONTENT);
         }
         Optional<User> user = userService.findById(getCurrentUser().getId());
         comment.setUser(user.get());
         Optional<Home> home = homeService.findById(homeId);
         comment.setHome(home.get());
         commentService.save(comment);
-        return new ResponseEntity<>(new ResponseMessage(comment.toString()),HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseMessage(true,"success",comment),HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteComment(@PathVariable Long id){

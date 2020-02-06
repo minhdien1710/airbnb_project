@@ -1,16 +1,10 @@
 package com.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +29,7 @@ public class User {
     private String email;
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -47,13 +41,18 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Home.class,mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Home> homes;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Comment.class,mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Comment> comments;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Booking.class,mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Booking> bookings;
 
 
 }

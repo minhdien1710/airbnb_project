@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/auth/api/bookings")
+@RequestMapping("/api/auth/bookings")
 public class BookingController {
     private UserPrincipal getCurrentUser() {
         return (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

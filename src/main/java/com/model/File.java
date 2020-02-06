@@ -13,8 +13,8 @@ public class File {
     private Long id;
     private String name;
     private String path;
+
     @ManyToOne
-    @JoinColumn(name = "home_id")
     private Home home;
 
     }

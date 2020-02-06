@@ -1,5 +1,6 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,6 +14,8 @@ public class TypeRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "typeRoom", cascade = CascadeType.ALL)
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "typeRoom", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Home> homes;
 }
